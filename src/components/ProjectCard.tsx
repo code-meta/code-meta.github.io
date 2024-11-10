@@ -16,9 +16,15 @@ interface ProjectCardProps {
   name: string;
   live?: string;
   description: string;
+  featureImages: { large: string; medium: string }[];
 }
 
-const ProjectCard = ({ name, live = "", description }: ProjectCardProps) => {
+const ProjectCard = ({
+  name,
+  live = "",
+  description,
+  featureImages,
+}: ProjectCardProps) => {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
   );
@@ -26,17 +32,17 @@ const ProjectCard = ({ name, live = "", description }: ProjectCardProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col-reverse lg:flex-row items-center lg:justify-between gap-6 lg:gap-12">
-      <div className="text-center lg:text-left pt-4 lg:pt-0">
+    <div className="flex flex-col-reverse lg:flex-row items-center lg:justify-between gap-6 lg:gap-12 lg:-mt-40">
+      <div className="text-center lg:text-left pt-4 lg:pt-0 lg:max-w-md">
         <Link to={live} target={live !== "" ? "_blank" : "_self"}>
           <h4 className="text-2xl font-semibold flex items-center justify-center lg:justify-start gap-x-4 cursor-pointer">
             <span>{name}</span>
             {live && <SquareArrowOutUpRight />}
           </h4>
         </Link>
-        <p className="text-lg mt-2">{description}</p>
+        <p className="text-lg mt-2 leading-relaxed">{description}</p>
         <button
-          className="bg-green-950 px-4 py-2 rounded-md mt-5"
+          className="bg-green-950 px-4 py-2 rounded-md mt-5 hover:bg-green-900 transition-all"
           onClick={() => {
             const link = slugify(name, { lower: true });
             navigate(`projects/${link}`);
@@ -54,7 +60,7 @@ const ProjectCard = ({ name, live = "", description }: ProjectCardProps) => {
           onMouseLeave={plugin.current.reset}
         >
           <CarouselContent>
-            {[...Array(2)].map((_, idx) => (
+            {featureImages.map((featureImage, idx) => (
               <CarouselItem key={idx}>
                 <div className="p-1">
                   <Card className="!bg-transparent border-none">
@@ -62,11 +68,11 @@ const ProjectCard = ({ name, live = "", description }: ProjectCardProps) => {
                       <picture>
                         <source
                           media="(min-width: 1024px)"
-                          srcSet={`/images/log-journal/log-large.png`}
+                          srcSet={`/images/${featureImage.large}`}
                           className="w-full max-w-[600px] rounded-lg glow-effect"
                         />
                         <img
-                          src="/images/log-journal/log-medium.png"
+                          src={`/images/${featureImage.medium}`}
                           alt="Responsive content"
                           className="w-full max-w-[600px] rounded-lg glow-effect"
                         />
