@@ -1,5 +1,4 @@
 import { Mail } from "lucide-react";
-import React from "react";
 import { Link } from "react-router-dom";
 
 const About = () => {
@@ -11,7 +10,7 @@ const About = () => {
         alt="my-photo"
       />
       <p className="mt-6 leading-loose tracking-wide text-lg max-w-4xl">
-        I’m John doe, a web apps developer focused on delivering streamlined,
+        I’m Fahim, a web apps developer focused on delivering streamlined,
         high-performance solutions tailored to client needs. I specialize in
         crafting web apps, APIs, and frontend-to-backend systems that aren’t
         just optimized for speed and scalability but designed to enhance user

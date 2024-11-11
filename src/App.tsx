@@ -1,11 +1,13 @@
 import About from "./components/About";
 import Nav from "./components/Nav";
 import ProjectCard from "./components/ProjectCard";
+import ScrollToSection from "./components/ScrollToSection";
 import { projects } from "./lib/context";
 
 const App = () => {
   return (
     <div className="container mx-auto px-4 h-dvh">
+      <ScrollToSection />
       <Nav />
 
       <section className="mt-40">
@@ -16,13 +18,13 @@ const App = () => {
         </h1>
       </section>
 
-      <section className="py-24">
+      <section className="py-24" id="projects">
         {projects.map((project, i) => (
           <ProjectCard key={i + Date.now()} {...project} />
         ))}
       </section>
 
-      <section className="py-10">
+      <section className="py-10" id="about">
         <About />
       </section>
 

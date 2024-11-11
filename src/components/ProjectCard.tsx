@@ -32,7 +32,7 @@ const ProjectCard = ({
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col-reverse lg:flex-row items-center lg:justify-between gap-6 lg:gap-12 lg:-mt-40">
+    <div className="flex flex-col-reverse lg:flex-row items-center lg:justify-between gap-6 lg:gap-12 lg:-mt-48">
       <div className="text-center lg:text-left pt-4 lg:pt-0 lg:max-w-md">
         <Link to={live} target={live !== "" ? "_blank" : "_self"}>
           <h4 className="text-2xl font-semibold flex items-center justify-center lg:justify-start gap-x-4 cursor-pointer">
